@@ -1,3 +1,3 @@
-# Covid Tracker
+# Info Covid Tracker
 
-Covid Tracker
+Info Covid Tracker
