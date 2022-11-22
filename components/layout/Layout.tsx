@@ -1,4 +1,5 @@
 import { FC } from "react";
+import Navbar from "../navbar/Navbar";
 import Meta from "./Meta";
 
 interface LayoutProps {
@@ -9,6 +10,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
   return (
     <>
       <Meta />
+      <Navbar />
       {children}
     </>
   );

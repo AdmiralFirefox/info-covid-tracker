@@ -1,0 +1,51 @@
+@use "../themeprovider/themeprovider" as theme-provider;
+
+// Mixins
+@mixin nav-icons($font-size) {
+  color: theme-provider.$white-font-color;
+  font-size: $font-size;
+  transition: color 0.5s ease-in-out;
+
+  &:hover {
+    color: theme-provider.$red-font-color;
+  }
+}
+
+@mixin nav-icon-active($font-size) {
+  color: theme-provider.$red-font-color;
+  font-size: $font-size;
+}
+
+// Wrapper
+.navbar-wrapper {
+  background: theme-provider.$navbar-background-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5em;
+  padding: 1em;
+  -webkit-tap-highlight-color: transparent;
+}
+
+// Icons
+.globe-icon {
+  @include nav-icons(4rem);
+}
+
+.globe-icon-active {
+  @include nav-icon-active(4rem);
+}
+
+.search-virus-icon {
+  @include nav-icons(4.5rem);
+}
+
+.search-virus-icon-active {
+  @include nav-icon-active(4.5rem);
+}
+
+@supports not (gap: 1em) {
+  .global-icon {
+    margin-right: 0.5em;
+  }
+}

@@ -1,11 +1,11 @@
 import { NextPage } from "next";
 import globalstyles from "../components/globalstyles/globalstyles";
 
-const Home: NextPage = () => {
+const Search: NextPage = () => {
   return (
     <>
       <div>
-        <h1>Home</h1>
+        <h1>Search</h1>
       </div>
 
       <style jsx global>
@@ -15,4 +15,4 @@ const Home: NextPage = () => {
   );
 };
 
-export default Home;
+export default Search;
