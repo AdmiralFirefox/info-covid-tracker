@@ -1,0 +1,47 @@
+@use "../themeprovider/themeprovider" as theme-provider;
+
+.web-title {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5em;
+  justify-content: center;
+  align-items: center;
+  margin: 3em 2em 0em 2em;
+  user-select: none;
+
+  h1 {
+    font-size: clamp(2.3rem, 4vw, 3rem);
+    background: linear-gradient(
+        90deg,
+        theme-provider.$gradient-color-one,
+        theme-provider.$gradient-color-two,
+        theme-provider.$gradient-color-one
+      )
+      0 0 / 400% 100%;
+    color: transparent;
+    background-clip: text;
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .web-title {
+    h1 {
+      animation: move-bg 8s linear infinite;
+    }
+    @keyframes move-bg {
+      to {
+        background-position: 400% 0;
+      }
+    }
+  }
+}
+
+@supports (not (gap: 1.5em)) and (not (font-size: clamp(2.3rem, 4vw, 3rem))) {
+  .web-title {
+    h1 {
+      margin: 0em 0.5em 0.5em 0.5em;
+      font-size: min(max(2.3rem, 4vw), 3rem);
+    }
+  }
+}

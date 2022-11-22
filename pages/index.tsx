@@ -1,12 +1,11 @@
 import { NextPage } from "next";
+import WebHeader from "../components/homepage/WebHeader";
 import globalstyles from "../components/globalstyles/globalstyles";
 
 const Home: NextPage = () => {
   return (
     <>
-      <div>
-        <h1>Home</h1>
-      </div>
+      <WebHeader />
 
       <style jsx global>
         {globalstyles}
