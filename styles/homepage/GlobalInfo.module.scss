@@ -1,0 +1,121 @@
+@use "../themeprovider/themeprovider" as theme-provider;
+
+//Global Title
+.global-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 4.5em 1.3em 0em 1.3em;
+
+  h1 {
+    color: theme-provider.$white-font-color;
+    font-size: clamp(2rem, 3vw, 2.5rem);
+  }
+
+  p {
+    color: theme-provider.$white-font-color;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    font-weight: 700;
+  }
+}
+
+@supports not (font-size: clamp(2rem, 3vw, 2.5rem)) {
+  .global-title {
+    h1 {
+      font-size: min(max(2rem, 3vw), 2.5rem);
+    }
+
+    p {
+      font-size: min(max(1rem, 1.5vw), 1.2rem);
+    }
+  }
+}
+
+// Global Cards
+@mixin cardContent($background-color) {
+  background: $background-color;
+  padding: 1em;
+  text-align: center;
+  width: min(20em, 100%);
+  border-radius: 10px;
+
+  p:first-of-type {
+    color: theme-provider.$white-font-color;
+    font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+    font-weight: 700;
+  }
+
+  p:nth-of-type(2) {
+    color: theme-provider.$white-font-color;
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    font-weight: 700;
+  }
+}
+
+// If the browser doesn't support the clamp feature
+@mixin cardContentSupport {
+  p:first-of-type {
+    font-size: min(max(1.2rem, 2.5vw), 1.7rem);
+  }
+
+  p:nth-of-type(2) {
+    font-size: min(max(1.2rem, 2.5vw), 1.5rem);
+  }
+}
+
+// Global Info
+.global-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10em, 3fr));
+  grid-gap: 2em;
+  margin: 3em 1.2em 5em 1.2em;
+
+  .card-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    .global-info-card-red {
+      @include cardContent(theme-provider.$red-background-color);
+    }
+
+    .global-info-card-orange {
+      @include cardContent(theme-provider.$orange-background-color);
+    }
+
+    .global-info-card-green {
+      @include cardContent(theme-provider.$green-background-color);
+    }
+  }
+}
+
+@media (min-width: theme-provider.$media-query-small-value) {
+  .global-info {
+    margin: 3em 2em 5em 2em;
+  }
+}
+
+@media (min-width: theme-provider.$media-query-normal-value) {
+  .global-info {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@supports not (font-size: clamp(1.2rem, 2.5vw, 1.7rem)) {
+  .global-info {
+    .card-wrapper {
+      .global-info-card-red {
+        @include cardContentSupport;
+      }
+
+      .global-info-card-orange {
+        @include cardContentSupport;
+      }
+
+      .global-info-card-green {
+        @include cardContentSupport;
+      }
+    }
+  }
+}
