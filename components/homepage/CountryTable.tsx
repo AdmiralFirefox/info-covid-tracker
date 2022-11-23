@@ -88,7 +88,7 @@ const CountryTable: FC<CountriesInfoProps> = ({ countriesInfoData }) => {
           sx={{
             width: "min(70em, 100%)",
             height: "40em",
-            margin: "2em 2em 6.5em 2em",
+            margin: "2em 1.5em 6.5em 1.5em",
           }}
         >
           <DataGrid
