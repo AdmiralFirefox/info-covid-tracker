@@ -1,0 +1,25 @@
+@use "../themeprovider/themeprovider" as theme-provider;
+
+.countries-title {
+  margin-top: 7em;
+
+  h1 {
+    color: theme-provider.$white-font-color;
+    text-align: center;
+    font-size: clamp(1.7rem, 3vw, 2.2rem);
+  }
+}
+
+.table-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+@supports not (font-size: clamp(1.7rem, 3vw, 2.2rem)) {
+  .countries-title {
+    h1 {
+      font-size: min(max(1.7rem, 3vw), 2.2rem);
+    }
+  }
+}
