@@ -9,6 +9,7 @@ export interface CountriesProps {
       TotalDeaths: number;
       TotalRecovered: number;
     };
+<<<<<<< HEAD
     Countries: {
       ID: string;
       Country: string;
@@ -19,6 +20,8 @@ export interface CountriesProps {
       TotalDeaths: number;
       TotalRecovered: number;
     }[];
+=======
+>>>>>>> 401111852b8208539ed1331e24428b6b6178f623
   };
 }
 
@@ -34,6 +37,7 @@ export interface GlobalInfoProps {
   };
 }
 
+<<<<<<< HEAD
 export interface CountriesInfoProps {
   countriesInfoData: {
     ID: string;
@@ -47,6 +51,8 @@ export interface CountriesInfoProps {
   }[];
 }
 
+=======
+>>>>>>> 401111852b8208539ed1331e24428b6b6178f623
 export type GlobalDate = {
   date: string;
 };
