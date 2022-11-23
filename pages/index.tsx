@@ -8,7 +8,7 @@ import globalstyles from "../components/globalstyles/globalstyles";
 const Home: NextPage<CountriesProps> = ({ countries }) => {
   const globalInfo = countries.Global;
   const countriesInfo = countries.Countries;
-  
+
   return (
     <>
       <WebHeader />
