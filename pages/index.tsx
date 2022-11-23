@@ -14,6 +14,7 @@ const Home: NextPage<CountriesProps> = ({ countries }) => {
       <WebHeader />
       <GlobalInfo globalInfoData={globalInfo} />
       <CountryTable countriesInfoData={countriesInfo} />
+
       <style jsx global>
         {globalstyles}
       </style>

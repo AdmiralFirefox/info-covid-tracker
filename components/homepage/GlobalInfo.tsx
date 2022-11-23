@@ -35,13 +35,13 @@ const GlobalInfo: FC<GlobalInfoProps> = ({ globalInfoData }) => {
         </div>
         <div className={styles["card-wrapper"]}>
           <div className={styles[orangeCard]}>
-            <p>Confirmed Cases:</p>
+            <p>Deaths:</p>
             <p>{globalInfoData.TotalDeaths.toLocaleString()}</p>
           </div>
         </div>
         <div className={styles["card-wrapper"]}>
           <div className={styles[greenCard]}>
-            <p>Confirmed Cases:</p>
+            <p>Recovered:</p>
             <p>{globalInfoData.TotalRecovered.toLocaleString()}</p>
           </div>
         </div>
