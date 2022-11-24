@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ChangeEvent, FC, useState } from "react";
 import { SearchCountriesType } from "../../types/SearchCountriesType";
 import Image from "next/image";
@@ -87,7 +88,11 @@ const SearchCountries: FC<SearchCountriesType> = ({ searchCountries }) => {
         <div className={styles["search-countries"]}>
           {countryResults.map((searchCountry) => (
             <div key={searchCountry.ISO2} className={styles["countries-card"]}>
-              <h1>{searchCountry.Country}</h1>
+              <h1>
+                <Link href={`/country/${searchCountry.Slug}`}>
+                  {searchCountry.Country}
+                </Link>
+              </h1>
             </div>
           ))}
         </div>
