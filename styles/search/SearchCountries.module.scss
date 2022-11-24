@@ -83,6 +83,7 @@
       padding: 1em;
       cursor: pointer;
       transition: background 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
 
       h1 {
         color: theme-provider.$white-font-color;
