@@ -5,9 +5,9 @@ export type ContextType = {
 };
 
 export interface CountryProps {
-  Country: string;
-  Slug: string;
-  ISO2: string;
+  Countries: {
+    Slug: string;
+  }[];
 }
 
 export interface CountryInfoProps {

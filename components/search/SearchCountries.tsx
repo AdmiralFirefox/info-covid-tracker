@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ChangeEvent, FC, useState } from "react";
-import { SearchCountriesType } from "../../types/SearchCountriesType";
+import { SearchCountryProp } from "../../types/SearchCountriesType";
 import Image from "next/image";
 import Paper from "@mui/material/Paper";
 import InputBase from "@mui/material/InputBase";
@@ -56,7 +56,7 @@ const SearchCountryTextBox = ({ handleChange }: HandleChangeProps) => {
   );
 };
 
-const SearchCountries: FC<SearchCountriesType> = ({ searchCountries }) => {
+const SearchCountries: FC<SearchCountryProp> = ({ searchCountries }) => {
   const [searchCountry, setSearchCountry] = useState("");
 
   const handleChange = (
@@ -87,7 +87,7 @@ const SearchCountries: FC<SearchCountriesType> = ({ searchCountries }) => {
       <div className={styles["search-countries-wrapper"]}>
         <div className={styles["search-countries"]}>
           {countryResults.map((searchCountry) => (
-            <div key={searchCountry.ISO2} className={styles["countries-card"]}>
+            <div key={searchCountry.ID} className={styles["countries-card"]}>
               <h1>
                 <Link href={`/country/${searchCountry.Slug}`}>
                   {searchCountry.Country}

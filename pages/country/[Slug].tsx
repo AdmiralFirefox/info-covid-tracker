@@ -24,11 +24,13 @@ const Country: NextPage<CountryInfoDataProps> = ({ country }) => {
 export default Country;
 
 export const getStaticPaths = async () => {
-  const res = await fetch("https://api.covid19api.com/countries");
+  const res = await fetch("https://api.covid19api.com/summary");
 
-  const countryInfo: CountryProps[] = await res.json();
+  const countryInfo: CountryProps = await res.json();
 
-  const paths = countryInfo.map((country) => {
+  const searchCountries = countryInfo.Countries;
+
+  const paths = searchCountries.map((country) => {
     return {
       params: { Slug: country.Slug },
     };

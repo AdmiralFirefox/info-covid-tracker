@@ -1,12 +1,14 @@
 import { NextPage } from "next";
-import { SearchCountriesType } from "../types/SearchCountriesType";
+import { SearchCountriesProps } from "../types/SearchCountriesType";
 import SearchCountries from "../components/search/SearchCountries";
 import globalstyles from "../components/globalstyles/globalstyles";
 
-const Search: NextPage<SearchCountriesType> = ({ searchCountries }) => {
+const Search: NextPage<SearchCountriesProps> = ({ searchCountries }) => {
+  const countries = searchCountries.Countries;
+
   return (
     <>
-      <SearchCountries searchCountries={searchCountries} />
+      <SearchCountries searchCountries={countries} />
 
       <style jsx global>
         {globalstyles}
@@ -18,7 +20,7 @@ const Search: NextPage<SearchCountriesType> = ({ searchCountries }) => {
 export default Search;
 
 export const getStaticProps = async () => {
-  const res = await fetch("https://api.covid19api.com/countries");
+  const res = await fetch("https://api.covid19api.com/summary");
   const searchCountries = await res.json();
 
   return {
