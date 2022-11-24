@@ -1,4 +1,5 @@
 import { NextPage } from "next";
+import { useRouter } from "next/router";
 import {
   CountryProps,
   CountryInfoDataProps,
@@ -8,7 +9,17 @@ import CountryInfo from "../../components/countryinfo/CountryInfo";
 import globalstyles from "../../components/globalstyles/globalstyles";
 
 const Country: NextPage<CountryInfoDataProps> = ({ country }) => {
+  const router = useRouter();
+
   const latestCountryInfo = country[country.length - 1];
+
+  if (router.isFallback) {
+    return (
+      <div>
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -38,7 +49,7 @@ export const getStaticPaths = async () => {
 
   return {
     paths: paths,
-    fallback: false,
+    fallback: true,
   };
 };
 
