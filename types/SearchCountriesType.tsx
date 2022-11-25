@@ -1,3 +1,5 @@
+import { ChangeEvent } from "react";
+
 export interface SearchCountriesProps {
   searchCountries: {
     Countries: {
@@ -14,4 +16,12 @@ export interface SearchCountryProp {
     Country: string;
     Slug: string;
   }[];
+  searchCountry: string;
+}
+
+export interface HandleChangeProps {
+  handleChange: (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void;
+  searchCountry: string;
 }

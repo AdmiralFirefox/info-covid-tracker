@@ -1,70 +1,13 @@
 import Link from "next/link";
-import { ChangeEvent, FC, useState } from "react";
+import { FC } from "react";
 import { SearchCountryProp } from "../../types/SearchCountriesType";
-import Image from "next/image";
-import Paper from "@mui/material/Paper";
-import InputBase from "@mui/material/InputBase";
-import Box from "@mui/material/Box";
 import Fuse from "fuse.js";
 import styles from "../../styles/search/SearchCountries.module.scss";
 
-type HandleChangeProps = {
-  handleChange: (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => void;
-};
-
-const SearchCountryTitle = () => {
-  return (
-    <div className={styles["search-country-title"]}>
-      <h1>Search Country</h1>
-      <Image src="/assets/virus-scan.png" alt="" width={85} height={85} />
-    </div>
-  );
-};
-
-const SearchCountryTextBox = ({ handleChange }: HandleChangeProps) => {
-  return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        margin: "3em 1.2em 0em 1.2em",
-      }}
-    >
-      <Paper
-        component="form"
-        sx={{
-          padding: "0.5em",
-          display: "flex",
-          alignItems: "center",
-          width: "min(30em, 100%)",
-          background: "#444444",
-        }}
-      >
-        <InputBase
-          sx={{ ml: 1, flex: 1 }}
-          placeholder="Search Country"
-          inputProps={{
-            "aria-label": "Search Country",
-            style: { color: "#ffffff", fontWeight: 700 },
-          }}
-          onChange={handleChange}
-        />
-      </Paper>
-    </Box>
-  );
-};
-
-const SearchCountries: FC<SearchCountryProp> = ({ searchCountries }) => {
-  const [searchCountry, setSearchCountry] = useState("");
-
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setSearchCountry(e.target.value);
-  };
-
+const SearchCountries: FC<SearchCountryProp> = ({
+  searchCountries,
+  searchCountry,
+}) => {
   const fuse = new Fuse(searchCountries, {
     keys: ["Country", "Slug"],
     includeScore: true,
@@ -76,8 +19,6 @@ const SearchCountries: FC<SearchCountryProp> = ({ searchCountries }) => {
 
   return (
     <>
-      <SearchCountryTitle />
-      <SearchCountryTextBox handleChange={handleChange} />
       {searchCountry !== "" && (
         <p className={styles["search-results-text"]}>
           Search Results for: {searchCountry}
