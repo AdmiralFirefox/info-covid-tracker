@@ -3,16 +3,21 @@ import WebHeader from "../components/homepage/WebHeader";
 import GlobalInfo from "../components/homepage/GlobalInfo";
 import CountryTable from "../components/homepage/CountryTable";
 import { CountriesProps } from "../types/CountriesType";
+import dayjs from "dayjs";
 
 const Home: NextPage<CountriesProps> = ({ countries }) => {
   const globalInfo = countries.Global;
   const countriesInfo = countries.Countries;
+  const dateUpdated = dayjs(countries.Date).format("MM/DD/YYYY, h:mm:ss a");
 
   return (
     <>
       <WebHeader />
       <GlobalInfo globalInfoData={globalInfo} />
-      <CountryTable countriesInfoData={countriesInfo} />
+      <CountryTable
+        countriesInfoData={countriesInfo}
+        dateUpdated={dateUpdated}
+      />
     </>
   );
 };

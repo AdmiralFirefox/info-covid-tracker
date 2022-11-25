@@ -63,7 +63,10 @@ const columns: GridColDef[] = [
   },
 ];
 
-const CountryTable: FC<CountriesInfoProps> = ({ countriesInfoData }) => {
+const CountryTable: FC<CountriesInfoProps> = ({
+  countriesInfoData,
+  dateUpdated,
+}) => {
   const countriesInfo = countriesInfoData.map((country) => {
     return {
       ID: country.ID,
@@ -81,6 +84,9 @@ const CountryTable: FC<CountriesInfoProps> = ({ countriesInfoData }) => {
     <>
       <div className={styles["countries-title"]}>
         <h1>Countries</h1>
+        <p>
+          Updated: {dateUpdated !== undefined ? dateUpdated : "Unvailable..."}
+        </p>
       </div>
 
       <div className={styles["table-wrapper"]}>
@@ -88,7 +94,7 @@ const CountryTable: FC<CountriesInfoProps> = ({ countriesInfoData }) => {
           sx={{
             width: "min(70em, 100%)",
             height: "40em",
-            margin: "2em 1.5em 6.5em 1.5em",
+            margin: "2.5em 1.5em 6em 1.5em",
           }}
         >
           <DataGrid

@@ -19,6 +19,7 @@ export interface CountriesProps {
       TotalDeaths: number;
       TotalRecovered: number;
     }[];
+    Date: string;
   };
 }
 
@@ -45,6 +46,7 @@ export interface CountriesInfoProps {
     TotalDeaths: number;
     TotalRecovered: number;
   }[];
+  dateUpdated: string;
 }
 
 export interface GlobalDate {
