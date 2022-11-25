@@ -47,6 +47,12 @@ export interface CountriesInfoProps {
   }[];
 }
 
-export type GlobalDate = {
+export interface GlobalDate {
   date: string;
-};
+}
+
+export interface GlobalInfoCardProps {
+  cardStyles: string;
+  cardTitle: string;
+  cardData: string;
+}

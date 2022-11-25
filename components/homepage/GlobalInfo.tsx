@@ -1,14 +1,32 @@
 import { FC } from "react";
-import { GlobalInfoProps } from "../../types/CountriesType";
+import {
+  GlobalInfoProps,
+  GlobalInfoCardProps,
+} from "../../types/CountriesType";
 import dayjs from "dayjs";
 import { GlobalDate } from "../../types/CountriesType";
 import styles from "../../styles/homepage/GlobalInfo.module.scss";
 
-const GlobalTitle = ({ date }: GlobalDate) => {
+const GlobalTitle: FC<GlobalDate> = ({ date }) => {
   return (
     <div className={styles["global-title"]}>
       <h1>Global</h1>
       <p>Updated: {date !== undefined ? date : "Unvailable..."}</p>
+    </div>
+  );
+};
+
+const GlobalInfoCard: FC<GlobalInfoCardProps> = ({
+  cardStyles,
+  cardTitle,
+  cardData,
+}) => {
+  return (
+    <div className={styles["card-wrapper"]}>
+      <div className={styles[cardStyles]}>
+        <p>{cardTitle}</p>
+        <p>{cardData}</p>
+      </div>
     </div>
   );
 };
@@ -26,42 +44,38 @@ const GlobalInfo: FC<GlobalInfoProps> = ({ globalInfoData }) => {
     <>
       <GlobalTitle date={dateUpdated} />
 
-      <div className={styles["global-info"]}>
-        <div className={styles["card-wrapper"]}>
-          <div className={styles[redCard]}>
-            <p>Confirmed Cases:</p>
-            <p>{globalInfoData.TotalConfirmed.toLocaleString()}</p>
-          </div>
-        </div>
-        <div className={styles["card-wrapper"]}>
-          <div className={styles[orangeCard]}>
-            <p>Deaths:</p>
-            <p>{globalInfoData.TotalDeaths.toLocaleString()}</p>
-          </div>
-        </div>
-        <div className={styles["card-wrapper"]}>
-          <div className={styles[greenCard]}>
-            <p>Recovered:</p>
-            <p>{globalInfoData.TotalRecovered.toLocaleString()}</p>
-          </div>
-        </div>
-        <div className={styles["card-wrapper"]}>
-          <div className={styles[redCard]}>
-            <p>New Cases:</p>
-            <p>{globalInfoData.NewConfirmed.toLocaleString()}</p>
-          </div>
-        </div>
-        <div className={styles["card-wrapper"]}>
-          <div className={styles[orangeCard]}>
-            <p>New Deaths:</p>
-            <p>{globalInfoData.NewDeaths.toLocaleString()}</p>
-          </div>
-        </div>
-        <div className={styles["card-wrapper"]}>
-          <div className={styles[greenCard]}>
-            <p>New Recovered:</p>
-            <p>{globalInfoData.NewRecovered.toLocaleString()}</p>
-          </div>
+      <div className={styles["global-info-wrapper"]}>
+        <div className={styles["global-info"]}>
+          <GlobalInfoCard
+            cardStyles={redCard}
+            cardTitle="Confirmed Cases:"
+            cardData={globalInfoData.TotalConfirmed.toLocaleString()}
+          />
+          <GlobalInfoCard
+            cardStyles={orangeCard}
+            cardTitle="Deaths:"
+            cardData={globalInfoData.TotalDeaths.toLocaleString()}
+          />
+          <GlobalInfoCard
+            cardStyles={greenCard}
+            cardTitle="Recovered:"
+            cardData={globalInfoData.TotalRecovered.toLocaleString()}
+          />
+          <GlobalInfoCard
+            cardStyles={redCard}
+            cardTitle="New Cases:"
+            cardData={globalInfoData.NewConfirmed.toLocaleString()}
+          />
+          <GlobalInfoCard
+            cardStyles={orangeCard}
+            cardTitle="New Deaths:"
+            cardData={globalInfoData.NewDeaths.toLocaleString()}
+          />
+          <GlobalInfoCard
+            cardStyles={greenCard}
+            cardTitle="New Recovered:"
+            cardData={globalInfoData.NewRecovered.toLocaleString()}
+          />
         </div>
       </div>
     </>

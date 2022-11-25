@@ -65,56 +65,69 @@
 }
 
 // Global Info
-.global-info {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(10em, 3fr));
-  grid-gap: 2em;
-  margin: 3em 1.2em 5em 1.2em;
+.global-info-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 
-  .card-wrapper {
-    display: flex;
-    justify-content: center;
-    width: 100%;
+  .global-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
+    grid-gap: 2em;
+    margin: 3em 1.2em 5em 1.2em;
+    width: min(60em, 100%);
 
-    .global-info-card-red {
-      @include cardContent(theme-provider.$red-background-color);
-    }
+    .card-wrapper {
+      display: flex;
+      justify-content: center;
+      width: 100%;
 
-    .global-info-card-orange {
-      @include cardContent(theme-provider.$orange-background-color);
-    }
+      .global-info-card-red {
+        @include cardContent(theme-provider.$red-background-color);
+      }
 
-    .global-info-card-green {
-      @include cardContent(theme-provider.$green-background-color);
+      .global-info-card-orange {
+        @include cardContent(theme-provider.$orange-background-color);
+      }
+
+      .global-info-card-green {
+        @include cardContent(theme-provider.$green-background-color);
+      }
     }
   }
 }
 
 @media (min-width: theme-provider.$media-query-small-value) {
-  .global-info {
-    margin: 3em 2em 5em 2em;
+  .global-info-wrapper {
+    .global-info {
+      margin: 3em 2em 5em 2em;
+    }
   }
 }
 
 @media (min-width: theme-provider.$media-query-normal-value) {
-  .global-info {
-    grid-template-columns: repeat(3, 1fr);
+  .global-info-wrapper {
+    .global-info {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 }
 
 @supports not (font-size: clamp(1.2rem, 2.5vw, 1.7rem)) {
-  .global-info {
-    .card-wrapper {
-      .global-info-card-red {
-        @include cardContentSupport;
-      }
+  .global-info-wrapper {
+    .global-info {
+      .card-wrapper {
+        .global-info-card-red {
+          @include cardContentSupport;
+        }
 
-      .global-info-card-orange {
-        @include cardContentSupport;
-      }
+        .global-info-card-orange {
+          @include cardContentSupport;
+        }
 
-      .global-info-card-green {
-        @include cardContentSupport;
+        .global-info-card-green {
+          @include cardContentSupport;
+        }
       }
     }
   }
