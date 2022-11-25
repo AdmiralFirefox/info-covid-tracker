@@ -11,6 +11,8 @@ import Axios from "axios";
 import dayjs from "dayjs";
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 import { IconContext } from "react-icons";
+import Loading from "../placeholders/Loading";
+import Error from "../placeholders/Error";
 import styles from "../../styles/countryinfo/CountryInfo.module.scss";
 
 // Fetching Data for Countries
@@ -80,11 +82,21 @@ const CountryInfo: FC<CountrySlugProps> = ({
     );
 
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return (
+      <>
+        <BackToSearchPage handleBackToSearch={handleBackToSearch} />
+        <Loading />
+      </>
+    );
   }
 
   if (isError) {
-    return <h1>Something Went Wrong</h1>;
+    return (
+      <>
+        <BackToSearchPage handleBackToSearch={handleBackToSearch} />
+        <Error />
+      </>
+    );
   }
 
   const latestCountryInfo = data?.data[data?.data.length - 1];

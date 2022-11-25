@@ -17,7 +17,6 @@ const SearchCountryTextBox: FC<HandleChangeProps> = ({
       }}
     >
       <Paper
-        component="form"
         sx={{
           padding: "0.5em",
           display: "flex",
