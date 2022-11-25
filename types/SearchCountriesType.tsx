@@ -17,6 +17,7 @@ export interface SearchCountryProp {
     Slug: string;
   }[];
   searchCountry: string;
+  handleCountrySelect: (countryID: string) => void;
 }
 
 export interface HandleChangeProps {

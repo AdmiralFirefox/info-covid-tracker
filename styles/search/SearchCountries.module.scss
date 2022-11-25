@@ -34,14 +34,16 @@
       background: transparent;
       border: 5px solid theme-provider.$dark-red-font-color;
       border-radius: 12px;
-      padding: 1em;
+      padding: 1.1em;
       cursor: pointer;
       transition: background 0.2s ease;
+      outline: none;
       -webkit-tap-highlight-color: transparent;
 
       h1 {
         color: theme-provider.$white-font-color;
         font-size: 1.3rem;
+        line-height: 1.4em;
       }
 
       &:hover {

@@ -1,13 +1,16 @@
 import { NextPage } from "next";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState, useEffect } from "react";
 import { SearchCountriesProps } from "../types/SearchCountriesType";
 import SearchCountryTitle from "../components/search/SearchCountryTitle";
 import SearchCountryTextBox from "../components/search/SearchCountryTextbox";
 import SearchCountries from "../components/search/SearchCountries";
-import globalstyles from "../components/globalstyles/globalstyles";
+import CountryInfo from "../components/countryinfo/CountryInfo";
 
 const Search: NextPage<SearchCountriesProps> = ({ searchCountries }) => {
   const [searchCountry, setSearchCountry] = useState("");
+  const [countrySelected, setCountrySelected] = useState<boolean | string>(
+    false
+  );
 
   const countries = searchCountries.Countries;
 
@@ -16,6 +19,46 @@ const Search: NextPage<SearchCountriesProps> = ({ searchCountries }) => {
   ) => {
     setSearchCountry(e.target.value);
   };
+
+  const handleCountrySelect = (countryID: string) => {
+    setCountrySelected(countryID);
+  };
+
+  const handleBackToSearch = () => {
+    setCountrySelected(false);
+  };
+
+  // Save Country Selected State
+  useEffect(() => {
+    const json = localStorage.getItem("COUNTRY_SELECTED_STATE") as string;
+    const saveCountrySelectedState = JSON.parse(json);
+
+    if (saveCountrySelectedState) {
+      setCountrySelected(saveCountrySelectedState);
+    }
+  }, []);
+
+  useEffect(() => {
+    const json = JSON.stringify(countrySelected);
+    localStorage.setItem("COUNTRY_SELECTED_STATE", json);
+  }, [countrySelected]);
+
+  if (countrySelected) {
+    return (
+      <>
+        {countries.map(
+          (country) =>
+            countrySelected === country.ID && (
+              <CountryInfo
+                countrySlug={country.Slug}
+                key={country.ID}
+                handleBackToSearch={handleBackToSearch}
+              />
+            )
+        )}
+      </>
+    );
+  }
 
   return (
     <>
@@ -27,11 +70,8 @@ const Search: NextPage<SearchCountriesProps> = ({ searchCountries }) => {
       <SearchCountries
         searchCountries={countries}
         searchCountry={searchCountry}
+        handleCountrySelect={handleCountrySelect}
       />
-
-      <style jsx global>
-        {globalstyles}
-      </style>
     </>
   );
 };

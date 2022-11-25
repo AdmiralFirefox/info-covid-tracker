@@ -3,7 +3,6 @@ import WebHeader from "../components/homepage/WebHeader";
 import GlobalInfo from "../components/homepage/GlobalInfo";
 import CountryTable from "../components/homepage/CountryTable";
 import { CountriesProps } from "../types/CountriesType";
-import globalstyles from "../components/globalstyles/globalstyles";
 
 const Home: NextPage<CountriesProps> = ({ countries }) => {
   const globalInfo = countries.Global;
@@ -14,10 +13,6 @@ const Home: NextPage<CountriesProps> = ({ countries }) => {
       <WebHeader />
       <GlobalInfo globalInfoData={globalInfo} />
       <CountryTable countriesInfoData={countriesInfo} />
-
-      <style jsx global>
-        {globalstyles}
-      </style>
     </>
   );
 };

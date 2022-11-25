@@ -1,28 +1,10 @@
-export type ContextType = {
-  params: {
-    Slug: string;
-  };
-};
-
-export interface CountryProps {
-  Countries: {
-    Slug: string;
-  }[];
+export interface CountrySlugProps {
+  countrySlug: string;
+  handleBackToSearch: () => void;
 }
 
 export interface CountryInfoProps {
-  countryData: {
-    Country: string;
-    Date: string;
-    Confirmed: number;
-    Deaths: number;
-    Recovered: number;
-    Active: number;
-  };
-}
-
-export interface CountryInfoDataProps {
-  country: {
+  data: {
     Country: string;
     Date: string;
     Confirmed: number;
@@ -30,6 +12,10 @@ export interface CountryInfoDataProps {
     Recovered: number;
     Active: number;
   }[];
+}
+
+export interface BackToSearchProps {
+  handleBackToSearch: () => void;
 }
 
 export interface CountryTitleProps {
