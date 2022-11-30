@@ -56,5 +56,6 @@ export interface GlobalDate {
 export interface GlobalInfoCardProps {
   cardStyles: string;
   cardTitle: string;
-  cardData: string;
+  cardData: number;
+  delayTime: number;
 }

@@ -28,6 +28,7 @@ export interface CountryCardProps {
   dataInfo: number;
   cardStyle: string;
   cardStyleWrapper: string;
+  delayTime: number;
 }
 
 export type CountryLabelProps = string[] | undefined;

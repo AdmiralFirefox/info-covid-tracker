@@ -16,6 +16,8 @@ import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 import { IconContext } from "react-icons";
 import Loading from "../placeholders/Loading";
 import Error from "../placeholders/Error";
+import { motion } from "framer-motion";
+import CountUp from "react-countup";
 import styles from "../../styles/countryinfo/CountryInfo.module.scss";
 
 // Fetching Data for Countries
@@ -52,14 +54,22 @@ const CountryCard: FC<CountryCardProps> = ({
   dataInfo,
   cardStyle,
   cardStyleWrapper,
+  delayTime,
 }) => {
   return (
-    <div className={styles[cardStyleWrapper]}>
+    <motion.div
+      initial={{ scale: 0 }}
+      animate={{ scale: 1 }}
+      transition={{ duration: 0.7, delay: delayTime }}
+      className={styles[cardStyleWrapper]}
+    >
       <div className={styles[cardStyle]}>
         <h1>{dataTitle}</h1>
-        <p>{dataInfo.toLocaleString()}</p>
+        <p>
+          <CountUp end={dataInfo} separator="," duration={3} />
+        </p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -208,24 +218,28 @@ const CountryInfo: FC<CountrySlugProps> = ({
             dataInfo={latestCountryInfo!.Confirmed}
             cardStyle={redCard}
             cardStyleWrapper={cardContentWrapper}
+            delayTime={0.2}
           />
           <CountryCard
             dataTitle={"Deaths:"}
             dataInfo={latestCountryInfo!.Deaths}
             cardStyle={orangeCard}
             cardStyleWrapper={cardContentWrapper}
+            delayTime={0.3}
           />
           <CountryCard
             dataTitle={"Recovered:"}
             dataInfo={latestCountryInfo!.Recovered}
             cardStyle={greenCard}
             cardStyleWrapper={cardContentWrapper}
+            delayTime={0.4}
           />
           <CountryCard
             dataTitle={"Active Cases:"}
             dataInfo={latestCountryInfo!.Active}
             cardStyle={darkBlueCard}
             cardStyleWrapper={cardContentWrapper}
+            delayTime={0.5}
           />
         </div>
       </div>

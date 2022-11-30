@@ -5,6 +5,8 @@ import {
 } from "../../types/CountriesType";
 import dayjs from "dayjs";
 import { GlobalDate } from "../../types/CountriesType";
+import { motion } from "framer-motion";
+import CountUp from "react-countup";
 import styles from "../../styles/homepage/GlobalInfo.module.scss";
 
 const GlobalTitle: FC<GlobalDate> = ({ date }) => {
@@ -20,14 +22,22 @@ const GlobalInfoCard: FC<GlobalInfoCardProps> = ({
   cardStyles,
   cardTitle,
   cardData,
+  delayTime,
 }) => {
   return (
-    <div className={styles["card-wrapper"]}>
+    <motion.div
+      initial={{ scale: 0 }}
+      animate={{ scale: 1 }}
+      transition={{ duration: 0.7, delay: delayTime }}
+      className={styles["card-wrapper"]}
+    >
       <div className={styles[cardStyles]}>
         <p>{cardTitle}</p>
-        <p>{cardData}</p>
+        <p>
+          <CountUp end={cardData} separator="," duration={3} />
+        </p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -49,32 +59,38 @@ const GlobalInfo: FC<GlobalInfoProps> = ({ globalInfoData }) => {
           <GlobalInfoCard
             cardStyles={redCard}
             cardTitle="Confirmed Cases:"
-            cardData={globalInfoData.TotalConfirmed.toLocaleString()}
+            cardData={globalInfoData.TotalConfirmed}
+            delayTime={0.2}
           />
           <GlobalInfoCard
             cardStyles={orangeCard}
             cardTitle="Deaths:"
-            cardData={globalInfoData.TotalDeaths.toLocaleString()}
+            cardData={globalInfoData.TotalDeaths}
+            delayTime={0.3}
           />
           <GlobalInfoCard
             cardStyles={greenCard}
             cardTitle="Recovered:"
-            cardData={globalInfoData.TotalRecovered.toLocaleString()}
+            cardData={globalInfoData.TotalRecovered}
+            delayTime={0.4}
           />
           <GlobalInfoCard
             cardStyles={redCard}
             cardTitle="New Cases:"
-            cardData={globalInfoData.NewConfirmed.toLocaleString()}
+            cardData={globalInfoData.NewConfirmed}
+            delayTime={0.5}
           />
           <GlobalInfoCard
             cardStyles={orangeCard}
             cardTitle="New Deaths:"
-            cardData={globalInfoData.NewDeaths.toLocaleString()}
+            cardData={globalInfoData.NewDeaths}
+            delayTime={0.6}
           />
           <GlobalInfoCard
             cardStyles={greenCard}
             cardTitle="New Recovered:"
-            cardData={globalInfoData.NewRecovered.toLocaleString()}
+            cardData={globalInfoData.NewRecovered}
+            delayTime={0.7}
           />
         </div>
       </div>
