@@ -89,7 +89,7 @@ const CountryInfo: FC<CountrySlugProps> = ({
   const countryLabel =
     data?.data !== undefined &&
     data?.data
-      .map((country) => dayjs(country.Date).add(2, "day").format("MM/DD/YYYY"))
+      .map((country) => dayjs(country.Date).format("MM/DD/YYYY"))
       .slice(-15)
       .reverse();
 
@@ -189,9 +189,9 @@ const CountryInfo: FC<CountrySlugProps> = ({
 
   const latestCountryInfo = data?.data[data?.data.length - 1];
 
-  const dateUpdated = dayjs(latestCountryInfo!.Date)
-    .add(2, "day")
-    .format("MM/DD/YYYY, h:mm:ss a");
+  const dateUpdated = dayjs(latestCountryInfo!.Date).format(
+    "MM/DD/YYYY, h:mm:ss a"
+  );
 
   return (
     <>
