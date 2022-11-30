@@ -1,10 +1,19 @@
 import { NextPage } from "next";
+import dynamic from "next/dynamic";
 import { ChangeEvent, useState, useEffect } from "react";
 import { SearchCountriesProps } from "../types/SearchCountriesType";
-import SearchCountryTitle from "../components/search/SearchCountryTitle";
-import SearchCountryTextBox from "../components/search/SearchCountryTextbox";
-import SearchCountries from "../components/search/SearchCountries";
-import CountryInfo from "../components/countryinfo/CountryInfo";
+const SearchCountryTitle = dynamic(
+  () => import("../components/search/SearchCountryTitle")
+);
+const SearchCountryTextBox = dynamic(
+  () => import("../components/search/SearchCountryTextbox")
+);
+const SearchCountries = dynamic(
+  () => import("../components/search/SearchCountries")
+);
+const CountryInfo = dynamic(
+  () => import("../components/countryinfo/CountryInfo")
+);
 
 const Search: NextPage<SearchCountriesProps> = ({ searchCountries }) => {
   const [searchCountry, setSearchCountry] = useState("");

@@ -1,7 +1,10 @@
 import { NextPage } from "next";
-import WebHeader from "../components/homepage/WebHeader";
-import GlobalInfo from "../components/homepage/GlobalInfo";
-import CountryTable from "../components/homepage/CountryTable";
+import dynamic from "next/dynamic";
+const WebHeader = dynamic(() => import("../components/homepage/WebHeader"));
+const GlobalInfo = dynamic(() => import("../components/homepage/GlobalInfo"));
+const CountryTable = dynamic(
+  () => import("../components/homepage/CountryTable")
+);
 import { CountriesProps } from "../types/CountriesType";
 import dayjs from "dayjs";
 
