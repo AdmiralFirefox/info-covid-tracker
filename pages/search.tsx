@@ -27,7 +27,7 @@ const CountryInfo = dynamic(
   }
 );
 import { Suspense } from "react";
-import Loading from "../components/placeholders/Loading";
+import LoadingComponent from "../components/placeholders/LoadingComponent";
 
 const Search: NextPage<SearchCountriesProps> = ({ searchCountries }) => {
   const [searchCountry, setSearchCountry] = useState("");
@@ -72,7 +72,7 @@ const Search: NextPage<SearchCountriesProps> = ({ searchCountries }) => {
         {countries.map(
           (country) =>
             countrySelected === country.ID && (
-              <Suspense fallback={<Loading />} key={country.ID}>
+              <Suspense fallback={<LoadingComponent />} key={country.ID}>
                 <CountryInfo
                   countrySlug={country.Slug}
                   handleBackToSearch={handleBackToSearch}
@@ -85,7 +85,7 @@ const Search: NextPage<SearchCountriesProps> = ({ searchCountries }) => {
   }
 
   return (
-    <Suspense fallback={<Loading />}>
+    <Suspense fallback={<LoadingComponent />}>
       <SearchCountryTitle />
       <SearchCountryTextBox
         handleChange={handleChange}
