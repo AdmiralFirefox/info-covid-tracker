@@ -5,6 +5,8 @@ const GlobalInfo = dynamic(() => import("../components/homepage/GlobalInfo"));
 const CountryTable = dynamic(
   () => import("../components/homepage/CountryTable")
 );
+import { Suspense } from "react";
+import Loading from "../components/placeholders/Loading";
 import { CountriesProps } from "../types/CountriesType";
 import dayjs from "dayjs";
 
@@ -14,14 +16,14 @@ const Home: NextPage<CountriesProps> = ({ countries }) => {
   const dateUpdated = dayjs(countries.Date).format("MM/DD/YYYY, h:mm:ss a");
 
   return (
-    <>
+    <Suspense fallback={<Loading />}>
       <WebHeader />
       <GlobalInfo globalInfoData={globalInfo} />
       <CountryTable
         countriesInfoData={countriesInfo}
         dateUpdated={dateUpdated}
       />
-    </>
+    </Suspense>
   );
 };
 
