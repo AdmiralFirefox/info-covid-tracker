@@ -5,8 +5,11 @@ import {
   CountryCardProps,
   CountrySlugProps,
   BackToSearchProps,
+  CountryLabelProps,
+  CountryDataInfoProps,
 } from "../../types/CountryInfoType";
 import { useQuery, UseQueryResult } from "react-query";
+import CountryChart from "./CountryChart";
 import Axios from "axios";
 import dayjs from "dayjs";
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
@@ -60,6 +63,7 @@ const CountryCard: FC<CountryCardProps> = ({
   );
 };
 
+// Main Component
 const CountryInfo: FC<CountrySlugProps> = ({
   countrySlug,
   handleBackToSearch,
@@ -81,6 +85,90 @@ const CountryInfo: FC<CountrySlugProps> = ({
       }
     );
 
+  // Chart Label
+  const countryLabel =
+    data?.data !== undefined &&
+    data?.data
+      .map((country) => dayjs(country.Date).add(2, "day").format("MM/DD/YYYY"))
+      .slice(-15)
+      .reverse();
+
+  // Confirmed Cases
+  const countryConfirmedCasesInfo =
+    data?.data !== undefined &&
+    data?.data
+      .map((country) => country.Confirmed)
+      .slice(-15)
+      .reverse();
+
+  const countryConfirmedCasesInfo2 =
+    data?.data !== undefined &&
+    data?.data
+      .map((country) => country.Confirmed)
+      .slice(-17)
+      .splice(1, 15)
+      .reverse();
+
+  // Confirmed Deaths
+  const countryConfirmedDeathsInfo =
+    data?.data !== undefined &&
+    data?.data
+      .map((country) => country.Deaths)
+      .slice(-15)
+      .reverse();
+
+  const countryConfirmedDeathsInfo2 =
+    data?.data !== undefined &&
+    data?.data
+      .map((country) => country.Deaths)
+      .slice(-17)
+      .splice(1, 15)
+      .reverse();
+
+  // Active Cases
+  const countryActiveCases =
+    data?.data !== undefined &&
+    data?.data
+      .map((country) => country.Active)
+      .slice(-15)
+      .reverse();
+
+  const countryActiveCases2 =
+    data?.data !== undefined &&
+    data?.data
+      .map((country) => country.Active)
+      .slice(-17)
+      .splice(1, 15)
+      .reverse();
+
+  // Subtracting Two Data Array
+  const absDifference = (arr1: number[], arr2: number[]) => {
+    const res = [];
+    for (let i = 0; i < arr1.length; i++) {
+      const el = (arr1[i] || 0) - (arr2[i] || 0);
+      res[i] = el;
+    }
+    return res;
+  };
+
+  // New Cases Chart
+  const combinedConfirmedCasesChart = absDifference(
+    countryConfirmedCasesInfo as number[],
+    countryConfirmedCasesInfo2 as number[]
+  );
+
+  // New Deaths Chart
+  const combinedConfirmedDeathsChart = absDifference(
+    countryConfirmedDeathsInfo as number[],
+    countryConfirmedDeathsInfo2 as number[]
+  );
+
+  // New Active Cases
+  const combinedActiveCasesChart = absDifference(
+    countryActiveCases as number[],
+    countryActiveCases2 as number[]
+  );
+
   if (isLoading) {
     return (
       <>
@@ -101,9 +189,9 @@ const CountryInfo: FC<CountrySlugProps> = ({
 
   const latestCountryInfo = data?.data[data?.data.length - 1];
 
-  const dateUpdated = dayjs(latestCountryInfo!.Date).format(
-    "MM/DD/YYYY, h:mm:ss a"
-  );
+  const dateUpdated = dayjs(latestCountryInfo!.Date)
+    .add(2, "day")
+    .format("MM/DD/YYYY, h:mm:ss a");
 
   return (
     <>
@@ -141,6 +229,48 @@ const CountryInfo: FC<CountrySlugProps> = ({
           />
         </div>
       </div>
+
+      <CountryChart
+        countryLabel={countryLabel as CountryLabelProps}
+        countryDataInfo={countryConfirmedCasesInfo as CountryDataInfoProps}
+        chartTitle="Confirmed Cases"
+        chartSubtitle="Number of Confirmed Cases"
+      />
+
+      <CountryChart
+        countryLabel={countryLabel as CountryLabelProps}
+        countryDataInfo={combinedConfirmedCasesChart as CountryDataInfoProps}
+        chartTitle="New Cases"
+        chartSubtitle="New Cases Each Day"
+      />
+
+      <CountryChart
+        countryLabel={countryLabel as CountryLabelProps}
+        countryDataInfo={countryConfirmedDeathsInfo as CountryDataInfoProps}
+        chartTitle="Confirmed Deaths"
+        chartSubtitle="Number of Confirmed Deaths"
+      />
+
+      <CountryChart
+        countryLabel={countryLabel as CountryLabelProps}
+        countryDataInfo={combinedConfirmedDeathsChart as CountryDataInfoProps}
+        chartTitle="New Deaths Deaths"
+        chartSubtitle="New Deaths Each Day"
+      />
+
+      <CountryChart
+        countryLabel={countryLabel as CountryLabelProps}
+        countryDataInfo={countryActiveCases as CountryDataInfoProps}
+        chartTitle="Active Cases"
+        chartSubtitle="Number of Active Cases"
+      />
+
+      <CountryChart
+        countryLabel={countryLabel as CountryLabelProps}
+        countryDataInfo={combinedActiveCasesChart as CountryDataInfoProps}
+        chartTitle="New Active Cases"
+        chartSubtitle="New Active Cases Each Day"
+      />
     </>
   );
 };

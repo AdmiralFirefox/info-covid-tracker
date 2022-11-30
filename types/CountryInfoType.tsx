@@ -29,3 +29,7 @@ export interface CountryCardProps {
   cardStyle: string;
   cardStyleWrapper: string;
 }
+
+export type CountryLabelProps = string[] | undefined;
+
+export type CountryDataInfoProps = number[] | undefined;

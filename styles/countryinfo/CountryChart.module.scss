@@ -1,0 +1,10 @@
+.chart-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 4em 0em;
+
+  .chart-content {
+    width: min(67em, 95%);
+    height: 45em;
+  }
+}
