@@ -3,16 +3,28 @@ import dynamic from "next/dynamic";
 import { ChangeEvent, useState, useEffect } from "react";
 import { SearchCountriesProps } from "../types/SearchCountriesType";
 const SearchCountryTitle = dynamic(
-  () => import("../components/search/SearchCountryTitle")
+  () => import("../components/search/SearchCountryTitle"),
+  {
+    suspense: true,
+  }
 );
 const SearchCountryTextBox = dynamic(
-  () => import("../components/search/SearchCountryTextbox")
+  () => import("../components/search/SearchCountryTextbox"),
+  {
+    suspense: true,
+  }
 );
 const SearchCountries = dynamic(
-  () => import("../components/search/SearchCountries")
+  () => import("../components/search/SearchCountries"),
+  {
+    suspense: true,
+  }
 );
 const CountryInfo = dynamic(
-  () => import("../components/countryinfo/CountryInfo")
+  () => import("../components/countryinfo/CountryInfo"),
+  {
+    suspense: true,
+  }
 );
 import { Suspense } from "react";
 import Loading from "../components/placeholders/Loading";

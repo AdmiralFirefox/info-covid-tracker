@@ -1,9 +1,16 @@
 import { NextPage } from "next";
 import dynamic from "next/dynamic";
-const WebHeader = dynamic(() => import("../components/homepage/WebHeader"));
-const GlobalInfo = dynamic(() => import("../components/homepage/GlobalInfo"));
+const WebHeader = dynamic(() => import("../components/homepage/WebHeader"), {
+  suspense: true,
+});
+const GlobalInfo = dynamic(() => import("../components/homepage/GlobalInfo"), {
+  suspense: true,
+});
 const CountryTable = dynamic(
-  () => import("../components/homepage/CountryTable")
+  () => import("../components/homepage/CountryTable"),
+  {
+    suspense: true,
+  }
 );
 import { Suspense } from "react";
 import Loading from "../components/placeholders/Loading";
