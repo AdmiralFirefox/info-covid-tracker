@@ -110,6 +110,6 @@ export const getStaticProps = async () => {
     props: {
       searchCountries,
     },
-    revalidate: 10,
+    revalidate: 60,
   };
 };
