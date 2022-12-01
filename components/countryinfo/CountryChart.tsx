@@ -47,6 +47,10 @@ const CountryChart: FC<CountryChartTypes> = ({
   const options = {
     responsive: true,
     maintainAspectRatio: false,
+    animation: {
+      duration: 0,
+    },
+    responsiveAnimationDuration: 0,
     plugins: {
       legend: {
         position: "top" as const,
