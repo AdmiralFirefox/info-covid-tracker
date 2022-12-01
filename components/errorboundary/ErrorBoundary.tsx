@@ -1,6 +1,5 @@
 import { Component, ErrorInfo } from "react";
 import Image from "next/image";
-import Button from "@mui/material/Button";
 import BounceLoader from "react-spinners/BounceLoader";
 import styles from "../../styles/errorboundary/ErrorBoundary.module.scss";
 
@@ -53,24 +52,6 @@ class ErrorBoundary extends Component<ErrorProps, ErrorState> {
               aria-label="Loading Spinner"
             />
           </div>
-
-          <Button
-            variant="contained"
-            onClick={() => this.setState({ hasError: false })}
-            sx={{
-              background: "hsl(200, 18%, 26%)",
-              color: "#ffffff",
-              marginTop: "3em",
-              padding: "1em",
-              fontSize: "1rem",
-
-              "&:hover": {
-                background: "hsl(200, 18%, 35%) ",
-              },
-            }}
-          >
-            Reload Page
-          </Button>
         </div>
       );
     }
