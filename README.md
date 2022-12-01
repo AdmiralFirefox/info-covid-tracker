@@ -4,8 +4,6 @@ This website is an updated version of [this one.](https://github.com/AdmiralFire
 
 **[You can visit the live site here.](https://info-covid-tracker.vercel.app/)**
 
-<br />
-
 **Built using [covid19api](https://covid19api.com/)**
 
 <br />
