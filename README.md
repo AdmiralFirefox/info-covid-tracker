@@ -1,6 +1,6 @@
 # Info Covid Tracker
 
-A website that tracks all information related to COVID-19. The data updates from time to time depending on the COVID-19 API.
+This website is an updated version of [this one.](https://github.com/AdmiralFirefox/info-covid-corner) It   tracks all information related to COVID-19. The data updates from time to time depending on the COVID-19 API.
 
 **[You can visit the live site here.](https://info-covid-tracker.vercel.app/)**
 
