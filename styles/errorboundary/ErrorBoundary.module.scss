@@ -1,0 +1,56 @@
+@use "../themeprovider/themeprovider" as theme-provider;
+
+.error-boundary-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2em 1.3em 5em 1.3em;
+
+  .image-wrapper {
+    animation: shake-vertical 7s linear infinite both;
+  }
+
+  h1 {
+    color: theme-provider.$white-font-color;
+    margin-top: 0.7em;
+    text-align: center;
+    line-height: 1.3em;
+    font-size: 2.2rem;
+  }
+
+  p {
+    color: theme-provider.$white-font-color;
+    margin-top: 1.5em;
+    text-align: center;
+    line-height: 1.5em;
+    font-size: 1.1rem;
+  }
+
+  .loader-wrapper {
+    margin-top: 2.8em;
+  }
+}
+
+@keyframes shake-vertical {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  10%,
+  30%,
+  50%,
+  70% {
+    transform: translateY(-8px);
+  }
+  20%,
+  40%,
+  60% {
+    transform: translateY(8px);
+  }
+  80% {
+    transform: translateY(6.4px);
+  }
+  90% {
+    transform: translateY(-6.4px);
+  }
+}

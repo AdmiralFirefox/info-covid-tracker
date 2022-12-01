@@ -1,6 +1,7 @@
 import { FC } from "react";
 import Navbar from "../navbar/Navbar";
 import Meta from "./Meta";
+import ErrorBoundary from "../errorboundary/ErrorBoundary";
 import globalstyles from "../globalstyles/globalstyles";
 
 interface LayoutProps {
@@ -10,9 +11,11 @@ interface LayoutProps {
 const Layout: FC<LayoutProps> = ({ children }) => {
   return (
     <>
-      <Meta />
-      <Navbar />
-      {children}
+      <ErrorBoundary>
+        <Meta />
+        <Navbar />
+        {children}
+      </ErrorBoundary>
 
       <style jsx global>
         {globalstyles}
