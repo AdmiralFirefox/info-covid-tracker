@@ -35,7 +35,7 @@ A website that tracks all information related to COVID-19. The data updates from
 
 **Searching for a Country's COVID-19 information**
 
-<img src="https://user-images.githubusercontent.com/79429518/205128026-cb3a2164-c32e-4f31-be07-b4e32458a3b0.gif" width="100%" height="100%">
+<img src="https://user-images.githubusercontent.com/79429518/205131519-77f749f1-d5d1-401d-b8e2-dba5df6099a7.gif" width="100%" height="100%">
 
 
 
