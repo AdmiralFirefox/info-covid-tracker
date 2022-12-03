@@ -2,6 +2,8 @@ import { FC } from "react";
 import { CountriesInfoProps } from "../../types/CountriesType";
 import { DataGrid, GridColDef, GridRowId } from "@mui/x-data-grid";
 import Box from "@mui/material/Box";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 import styles from "../../styles/homepage/CountryTable.module.scss";
 
 type IDProps = {
@@ -11,6 +13,12 @@ type IDProps = {
 type ValueProps = {
   value: number;
 };
+
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+  },
+});
 
 const columns: GridColDef[] = [
   {
@@ -90,102 +98,112 @@ const CountryTable: FC<CountriesInfoProps> = ({
       </div>
 
       <div className={styles["table-wrapper"]}>
-        <Box
-          sx={{
-            width: "min(70em, 100%)",
-            height: "40em",
-            margin: "2.5em 1.5em 6em 1.5em",
-          }}
-        >
-          <DataGrid
-            rows={countriesInfo}
-            getRowId={(row: IDProps) => row.ID}
-            columns={columns}
-            pageSize={15}
-            rowsPerPageOptions={[15]}
-            sortingOrder={["desc", "asc"]}
-            initialState={{
-              sorting: {
-                sortModel: [{ field: "TotalConfirmed", sort: "desc" }],
-              },
-            }}
+        <ThemeProvider theme={darkTheme}>
+          <CssBaseline />
+          <Box
             sx={{
-              boxShadow: "5px 10px 20px 1px rgba(0, 0, 0, 0.5)",
-              border: 6,
-              borderColor: "#4C57A6",
-              userSelect: "none",
-
-              // Prevent Text from overflowing
-              "& .MuiDataGrid-cellContent": {
-                textOverflow: "clip",
-                whiteSpace: "normal",
-              },
-
-              // Entire Header Content
-              "& .MuiDataGrid-columnHeaders": {
-                color: "#ffffff",
-                background: "#37474F",
-                outline: "none",
-                borderBottom: "none",
-              },
-
-              // Icons in the Header and Footer
-              "& .MuiButtonBase-root": {
-                color: "#ffffff",
-              },
-
-              // Entire Table Row
-              "& .MuiDataGrid-row": {
-                color: "#ffffff",
-                transition: "all 0.2s ease",
-
-                "&:hover": {
-                  background: "#444",
-                },
-              },
-
-              // Selected Row
-              "& .MuiDataGrid-row.Mui-selected": {
-                background: "none",
-
-                "&:hover": {
-                  background: "#444",
-                },
-              },
-
-              // Cell
-              "& .MuiDataGrid-cell": {
-                bordeBottom: "3px solid #ffffff",
-
-                "&:focus": {
-                  outline: "none",
-                },
-              },
-
-              // Removing Focuced Header
-              "& .MuiDataGrid-columnHeader": {
-                outline: "none !important",
-              },
-
-              // Footer Container
-              "& .MuiDataGrid-footerContainer": {
-                background: "#37474F",
-                borderTop: "none",
-                color: "#ffffff",
-              },
-
-              // Footer Displayed Rows
-              "& .MuiTablePagination-displayedRows": {
-                color: "#ffffff",
-              },
-
-              // Hide Selected Row Count
-              "& .MuiDataGrid-selectedRowCount": {
-                visibility: "hidden",
-              },
+              width: "min(70em, 100%)",
+              height: "40em",
+              margin: "2.5em 1.5em 6em 1.5em",
             }}
-          />
-        </Box>
+          >
+            <DataGrid
+              rows={countriesInfo}
+              getRowId={(row: IDProps) => row.ID}
+              columns={columns}
+              pageSize={15}
+              rowsPerPageOptions={[15]}
+              sortingOrder={["desc", "asc"]}
+              initialState={{
+                sorting: {
+                  sortModel: [{ field: "TotalConfirmed", sort: "desc" }],
+                },
+              }}
+              sx={{
+                boxShadow: "5px 10px 20px 1px rgba(0, 0, 0, 0.5)",
+                border: 6,
+                borderColor: "#4C57A6",
+                userSelect: "none",
+
+                // Prevent Text from overflowing
+                "& .MuiDataGrid-cellContent": {
+                  textOverflow: "clip",
+                  whiteSpace: "normal",
+                },
+
+                // Entire Header Content
+                "& .MuiDataGrid-columnHeaders": {
+                  color: "#ffffff",
+                  background: "#37474F",
+                  outline: "none",
+                  borderBottom: "none",
+                  borderTopRightRadius: 0,
+                  borderTopLeftRadius: 0,
+                },
+
+                // Icons in the Header and Footer
+                "& .MuiButtonBase-root": {
+                  color: "#ffffff",
+                },
+
+                // Entire Table Row
+                "& .MuiDataGrid-row": {
+                  color: "#ffffff",
+                  transition: "all 0.2s ease",
+
+                  "&:hover": {
+                    background: "#444",
+                  },
+                },
+
+                // Selected Row
+                "& .MuiDataGrid-row.Mui-selected": {
+                  background: "none",
+
+                  "&:hover": {
+                    background: "#444",
+                  },
+                },
+
+                // Cell
+                "& .MuiDataGrid-cell": {
+                  bordeBottom: "3px solid #ffffff",
+
+                  "&:focus": {
+                    outline: "none",
+                  },
+                },
+
+                // Removing Focuced Header
+                "& .MuiDataGrid-columnHeader": {
+                  outline: "none !important",
+                },
+
+                // Footer Container
+                "& .MuiDataGrid-footerContainer": {
+                  background: "#37474F",
+                  borderTop: "none",
+                  color: "#ffffff",
+                },
+
+                // Footer Displayed Rows
+                "& .MuiTablePagination-displayedRows": {
+                  color: "#ffffff",
+                },
+
+                // Column Separator
+                "& .MuiDataGrid-columnSeparator": {
+                  color: "#ffffff",
+                },
+
+                // Hide Selected Row Count
+                "& .MuiDataGrid-selectedRowCount": {
+                  visibility: "hidden",
+                },
+              }}
+            />
+          </Box>
+        </ThemeProvider>
       </div>
     </>
   );
