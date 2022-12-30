@@ -1,19 +1,7 @@
 import { NextPage } from "next";
-import dynamic from "next/dynamic";
-const WebHeader = dynamic(() => import("../components/homepage/WebHeader"), {
-  suspense: true,
-});
-const GlobalInfo = dynamic(() => import("../components/homepage/GlobalInfo"), {
-  suspense: true,
-});
-const CountryTable = dynamic(
-  () => import("../components/homepage/CountryTable"),
-  {
-    suspense: true,
-  }
-);
-import { Suspense } from "react";
-import LoadingComponent from "../components/placeholders/LoadingComponent";
+import WebHeader from "../components/homepage/WebHeader";
+import GlobalInfo from "../components/homepage/GlobalInfo";
+import CountryTable from "../components/homepage/CountryTable";
 import { CountriesProps } from "../types/CountriesType";
 import dayjs from "dayjs";
 
@@ -23,14 +11,14 @@ const Home: NextPage<CountriesProps> = ({ countries }) => {
   const dateUpdated = dayjs(countries.Date).format("MM/DD/YYYY, h:mm:ss a");
 
   return (
-    <Suspense fallback={<LoadingComponent />}>
+    <>
       <WebHeader />
       <GlobalInfo globalInfoData={globalInfo} />
       <CountryTable
         countriesInfoData={countriesInfo}
         dateUpdated={dateUpdated}
       />
-    </Suspense>
+    </>
   );
 };
 

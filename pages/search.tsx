@@ -2,24 +2,9 @@ import { NextPage } from "next";
 import dynamic from "next/dynamic";
 import { ChangeEvent, useState, useEffect } from "react";
 import { SearchCountriesProps } from "../types/SearchCountriesType";
-const SearchCountryTitle = dynamic(
-  () => import("../components/search/SearchCountryTitle"),
-  {
-    suspense: true,
-  }
-);
-const SearchCountryTextBox = dynamic(
-  () => import("../components/search/SearchCountryTextbox"),
-  {
-    suspense: true,
-  }
-);
-const SearchCountries = dynamic(
-  () => import("../components/search/SearchCountries"),
-  {
-    suspense: true,
-  }
-);
+import SearchCountryTitle from "../components/search/SearchCountryTitle";
+import SearchCountryTextBox from "../components/search/SearchCountryTextbox";
+import SearchCountries from "../components/search/SearchCountries";
 const CountryInfo = dynamic(
   () => import("../components/countryinfo/CountryInfo"),
   {
@@ -85,7 +70,7 @@ const Search: NextPage<SearchCountriesProps> = ({ searchCountries }) => {
   }
 
   return (
-    <Suspense fallback={<LoadingComponent />}>
+    <>
       <SearchCountryTitle />
       <SearchCountryTextBox
         handleChange={handleChange}
@@ -96,7 +81,7 @@ const Search: NextPage<SearchCountriesProps> = ({ searchCountries }) => {
         searchCountry={searchCountry}
         handleCountrySelect={handleCountrySelect}
       />
-    </Suspense>
+    </>
   );
 };
 
