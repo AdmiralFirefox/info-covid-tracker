@@ -1,5 +1,8 @@
 # Info Covid Tracker
 
+**&ast;&ast;Update&ast;&ast;
+ Last March 10, 2023, the Johns Hopkins Coronavirus Resource Center ceased its collecting and reporting of global COVID-19 data. The data will no longer be updated and this website's function such as searching for COVID 19 cases of each individual country no longer works. 🙁**
+
 This website is an updated version of [this one.](https://github.com/AdmiralFirefox/info-covid-corner) It   tracks all information related to COVID-19. The data updates from time to time depending on the COVID-19 API.
 
 **[You can visit the live site here.](https://info-covid-tracker.vercel.app/)**
